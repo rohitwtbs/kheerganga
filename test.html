@@ -7,8 +7,7 @@
     <div id="log"></div>
 
     <script>
-        // Change 'Hero123' to any name you want
-        const socket = new WebSocket("ws://localhost:8000/ws/Hero123");
+        const socket = new WebSocket("ws://localhost:8000/ws");
         const logDiv = document.getElementById("log");
 
         socket.onmessage = (event) => {
