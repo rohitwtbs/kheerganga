@@ -18,8 +18,8 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
-@app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
+@app.websocket("/ws/{player_id}")
+async def websocket_endpoint(websocket: WebSocket, player_id: str):
     print("Websocket connection ", websocket.__dict__)
     await manager.connect(websocket)
     try:
