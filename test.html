@@ -10,6 +10,27 @@
         const socket = new WebSocket("ws://localhost:8000/ws/player123");
         const logDiv = document.getElementById("log");
 
+        socket.onopen = (event) => {
+            console.log("WebSocket connected!");
+            const msg = document.createElement("p");
+            msg.innerText = "Connected!";
+            logDiv.appendChild(msg);
+        };
+
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+            const msg = document.createElement("p");
+            msg.innerText = "Error: " + error;
+            logDiv.appendChild(msg);
+        };
+
+        socket.onclose = (event) => {
+            console.log("WebSocket closed:", event);
+            const msg = document.createElement("p");
+            msg.innerText = "Disconnected!";
+            logDiv.appendChild(msg);
+        };
+
         socket.onmessage = (event) => {
             const msg = document.createElement("p");
             msg.innerText = "Server: " + event.data;
